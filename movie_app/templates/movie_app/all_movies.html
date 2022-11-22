@@ -1,0 +1,17 @@
+{%extends 'movie_app/base.html'%}
+{%block title%}Вск фильмы{%endblock%}
+{%block content%} 
+<h2>vse filmy</h2>   
+<ul>
+    {% for m in movies %}
+        <li><a href="{{m.get_url}}">{{m.name}}</a>,  rating-{{m.rating}},budget-{{m.budget}} year-{{m.year|default:'ne izvesten'}}</li>
+    {%endfor%}
+</ul>
+<h3>Средний бюжджет-{{agg.budget__avg}}</h3>
+<h3>Max rating-{{agg.rating__max}}</h3>
+<h3>Min rating-{{agg.rating__min}}</h3>
+<h3>Всего фильмов-{{total}}</h3>
+
+
+
+{%endblock%}
