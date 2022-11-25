@@ -1,9 +1,18 @@
 from django.contrib import admin,messages
-from .models import Movie
+from .models import Movie,Director,Actor
 from django.db.models import QuerySet
 # Register your models here.
 
-class RatingFiler(admin.SimpleListFilter):
+# @admin.register(Director)
+# class DirectorAdmin(admin.ModelAdmin):
+#     list_display=['first_name','last_name']
+
+admin.site.register(Director)
+admin.site.register(Actor)
+
+
+
+class RatingFilter(admin.SimpleListFilter):
     title="film filter"
     parameter_name="rating filma"
     def lookups(self, request,model_admin):
@@ -29,15 +38,16 @@ class RatingFiler(admin.SimpleListFilter):
 class MovieAdmin(admin.ModelAdmin):
     # fields=['name','rating']
     # exclude=['slug']
+    filter_horizontal=['actors']
     prepopulated_fields={'slug':('name',)}
     readonly_fields=['year']
-    list_display=['name','rating','year','currency','budget','rating_status']
-    list_editable=['rating','year','budget','currency']
+    list_display=['name','rating','director','budget','rating_status']
+    list_editable=['rating','budget','director']
     ordering=['-rating']
     list_per_page=10
     actions=['set_dollars','set_euros','set_rubles']
     search_fields=['name__startswith','rating']
-    list_filter=['name',RatingFiler,'currency']
+    list_filter=['name',RatingFilter,'currency']
     @admin.display(ordering='rating',description='status filma')
     def rating_status(self,mov:Movie):
         if mov.rating<50:

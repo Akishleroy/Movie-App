@@ -1,0 +1,7 @@
+<h2>Информация о режисерах</h2> 
+<ul>
+    {% for d in directors %}
+        <li><a href="{{d.get_url}}">{{d.first_name}} {{d.last_name}}</a> </li>
+
+    {%endfor%}
+</ul>

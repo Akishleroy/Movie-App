@@ -2,7 +2,22 @@
 {%block title%}Информация о фильме-{{movie}} {%endblock%}
 {%block content%} 
 <h2>Информация о фильме-{{movie.name}}</h2> 
-<h2>Rating -{{movie.rating}}%</h2>
-<h2>Year-{{movie.year}}</h2> 
-<h2>Budget-{{movie.budget}}</h2> 
+<h3>Rating -{{movie.rating}}%</h3>
+<h3>Year-{{movie.year}}</h3> 
+<h3>Budget-{{movie.budget}}</h3> 
+<hr>
+<h3>Информация о Режисере</h3> 
+<h3>Имя -{{movie.director.first_name}}</h3>
+<h3>Фамилия-{{movie.director.last_name}}</h3> 
+<h3>Почта-{{movie.director.director_email}}</h3> 
+<hr>
+<h3>Информация о Актерах</h3>
+<ul>
+    {% for a in movie.actors.all %}
+        <li>{{a}}</li>
+    {%endfor%}
+</ul>
+
+
+
 {%endblock%}

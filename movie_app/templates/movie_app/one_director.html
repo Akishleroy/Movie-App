@@ -1,0 +1,11 @@
+<h1>info about one director</h1>
+<h2>{{director.first_name}}</h2>
+<h2>{{director.last_name}}</h2>
+<h2>{{director.director_email}}</h2>
+<hr>
+<h2>Список фильмов</h2>
+<ul>
+    {% for m in director.movie_set.all %}
+        <li>{{m}}</li>
+    {%endfor%}
+</ul>

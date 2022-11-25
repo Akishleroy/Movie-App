@@ -1,0 +1,7 @@
+<h2>Информация о актерах</h2> 
+<ul>
+    {% for a in actors %}
+        <li><a href="{{a.get_url}}">{{a.first_name}} {{a.last_name}}</a> </li>
+
+    {%endfor%}
+</ul>

@@ -23,4 +23,9 @@ admin.site.index_title='Моя супер Админка'
 urlpatterns = [
     path('',views.show_all_movie),
     path('movie/<slug:slug_movie>',views.show_one_movie,name='movie_number'),
+    path('directors',views.show_all_directors),
+    path('directors/<slug:slug_movie>',views.show_one_director,name='director_number_slug'),
+    path('actors',views.show_all_actors),
+    path('actors/<slug:slug_actor>',views.show_one_actor,name='actor_number_slug'),
+
 ]
